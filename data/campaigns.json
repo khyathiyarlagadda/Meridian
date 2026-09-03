@@ -1,0 +1,108 @@
+[
+  {
+    "id": "CAMP_OPP_EARBUD_CROSSSELL",
+    "opportunity_id": "OPP_EARBUD_CROSSSELL",
+    "title": "Nova Pods Companion Case Discount",
+    "strategy": "cross-sell",
+    "target_audience": "Earbud buyers (n=481) within 7 days of purchase",
+    "offer": "15% off any Nova Premium Phone Case",
+    "discount_pct": 15.0,
+    "budget_inr": 24050.0,
+    "message": "Complete your audio setup! Get 15% off any precision-fit Nova Phone Case using code AUDIO15.",
+    "timing": "Triggered automatically 48 hours after Earbud delivery",
+    "status": "LAUNCHED",
+    "risk_tier": "medium",
+    "predicted_performance": {
+      "conversion_rate_pct": 37.0,
+      "revenue_inr": 124500.0,
+      "roi_pct": 280.0
+    },
+    "actual_performance": {
+      "conversion_rate_pct": 36.4,
+      "revenue_inr": 84292.0,
+      "roi_pct": 250.5
+    },
+    "performance_delta": {
+      "conversion_rate_delta_pts": -0.6,
+      "revenue_delta_inr": -40208.0,
+      "revenue_delta_pct": -32.3,
+      "roi_delta_pts": -29.5
+    }
+  },
+  {
+    "id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE",
+    "title": "Essential Protection Kit Bundle (Case + Screen Glass)",
+    "strategy": "bundle",
+    "target_audience": "Multi-item shoppers (n=2463) interested in phone protection",
+    "offer": "Save 20% when bundling Phone Case + Tempered Glass",
+    "discount_pct": 20.0,
+    "budget_inr": 25000.0,
+    "message": "Protect your phone completely! Add 9H Tempered Glass to your Phone Case order and save 20% instantly.",
+    "timing": "In-cart recommendation and checkout add-on trigger",
+    "status": "LAUNCHED",
+    "risk_tier": "medium",
+    "roi_pct": 250.5,
+    "incremental_revenue_inr": 84292.0
+  },
+  {
+    "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE",
+    "title": "Essential Protection Kit Bundle (Case + Screen Glass)",
+    "strategy": "bundle",
+    "target_audience": "Multi-item shoppers (n=2463) interested in phone protection",
+    "offer": "Save 20% when bundling Phone Case + Tempered Glass",
+    "discount_pct": 20.0,
+    "budget_inr": 25000.0,
+    "message": "Protect your phone completely! Add 9H Tempered Glass to your Phone Case order and save 20% instantly.",
+    "timing": "In-cart recommendation and checkout add-on trigger",
+    "id": "CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255726",
+    "status": "PENDING_MERCHANT_APPROVAL",
+    "risk_tier": "high"
+  },
+  {
+    "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE",
+    "title": "Essential Protection Kit Bundle (Case + Screen Glass)",
+    "strategy": "bundle",
+    "target_audience": "Multi-item shoppers (n=2463) interested in phone protection",
+    "offer": "Save 20% when bundling Phone Case + Tempered Glass",
+    "discount_pct": 20.0,
+    "budget_inr": 25000.0,
+    "message": "Protect your phone completely! Add 9H Tempered Glass to your Phone Case order and save 20% instantly.",
+    "timing": "In-cart recommendation and checkout add-on trigger",
+    "id": "CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255794",
+    "status": "PENDING_MERCHANT_APPROVAL",
+    "risk_tier": "high"
+  },
+  {
+    "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE",
+    "title": "Essential Protection Kit Bundle (Case + Screen Glass)",
+    "strategy": "bundle",
+    "target_audience": "Multi-item shoppers (n=2463) interested in phone protection",
+    "offer": "Save 20% when bundling Phone Case + Tempered Glass",
+    "discount_pct": 20.0,
+    "budget_inr": 25000.0,
+    "message": "Protect your phone completely! Add 9H Tempered Glass to your Phone Case order and save 20% instantly.",
+    "timing": "In-cart recommendation and checkout add-on trigger",
+    "id": "CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255984",
+    "status": "PENDING_MERCHANT_APPROVAL",
+    "risk_tier": "high"
+  },
+  {
+    "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE",
+    "title": "Essential Protection Kit Bundle (Case + Screen Glass)",
+    "strategy": "bundle",
+    "target_audience": "Multi-item shoppers (n=2463) interested in phone protection",
+    "offer": "Save 20% when bundling Phone Case + Tempered Glass",
+    "discount_pct": 20.0,
+    "budget_inr": 25000.0,
+    "message": "Protect your phone completely! Add 9H Tempered Glass to your Phone Case order and save 20% instantly.",
+    "timing": "In-cart recommendation and checkout add-on trigger",
+    "id": "CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788256016",
+    "status": "PENDING_MERCHANT_APPROVAL",
+    "risk_tier": "high"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "key": "pattern_weekend_conversion_peak",
+    "category": "PERFORMANCE_PATTERN",
+    "title": "Weekend Conversion & AOV Peak Pattern",
+    "fact_statement": "Accessory & bundle campaigns perform best on weekends (Saturday-Sunday) with a 4.86% conversion rate vs 3.14% on weekdays.",
+    "supporting_data": {
+      "weekend": {
+        "orders": 2622,
+        "total_revenue_inr": 6539317.0,
+        "conversion_rate_pct": 4.86,
+        "measured_aov_inr": 2494.02
+      },
+      "weekday": {
+        "orders": 7214,
+        "total_revenue_inr": 17927536.0,
+        "conversion_rate_pct": 3.14,
+        "measured_aov_inr": 2485.1
+      },
+      "conversion_lift_pts": 1.72,
+      "aov_difference_inr": 8.92
+    },
+    "applied_count": 22,
+    "last_updated": "03 Sep 2026, 10:27 AM"
+  },
+  {
+    "key": "pref_merchant_discount_cap",
+    "category": "MERCHANT_PREFERENCE",
+    "title": "Merchant Profit Margin Protection Preference",
+    "fact_statement": "Merchant prefers campaign discount percentages capped at or below 25.0% to protect gross profit margins.",
+    "supporting_data": {
+      "max_discount_percent": 1.0,
+      "max_campaign_budget_inr": 5000.0,
+      "enforcement": "SUPERVISOR_GUARDRAIL_STRICT"
+    },
+    "applied_count": 25,
+    "last_updated": "03 Sep 2026, 10:27 AM"
+  },
+  {
+    "key": "pattern_phone_case_cross_sell_velocity",
+    "category": "PERFORMANCE_PATTERN",
+    "title": "Earbud to Phone Case Cross-Sell Lift",
+    "fact_statement": "Earbud buyers exhibit a 36.4% cross-sell conversion to Phone Cases within 7 days of purchase.",
+    "supporting_data": {
+      "cross_sell_conversion_rate_pct": 36.4,
+      "target_segment_size": 481,
+      "recommended_delay_days": 2
+    },
+    "applied_count": 4,
+    "last_updated": "01 Sep 2026, 02:43 PM"
+  }
+]

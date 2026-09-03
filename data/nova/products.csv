@@ -1,0 +1,36 @@
+product_id,product_name,category,price_inr,launch_date
+PROD_EAR_01,Nova Pods Lite,Wireless Earbuds,1499,2025-01-15
+PROD_EAR_02,Nova BassPods Max,Wireless Earbuds,2499,2025-03-10
+PROD_EAR_03,Nova Air Buds Pro,Wireless Earbuds,3499,2025-06-20
+PROD_EAR_04,Nova SoundBuds ANC,Wireless Earbuds,4299,2025-11-05
+PROD_EAR_05,Nova SportPods Wireless,Wireless Earbuds,1999,2026-02-12
+PROD_PWR_01,Nova Boost 10K mAh,Power Banks,1299,2025-02-01
+PROD_PWR_02,Nova PowerVault 20K mAh,Power Banks,2199,2025-04-18
+PROD_PWR_03,Nova UltraCharge 30K mAh,Power Banks,3299,2025-08-22
+PROD_PWR_04,Nova SlimPower 5000,Power Banks,899,2026-01-10
+PROD_PWR_05,Nova MagPower Wireless 10K,Power Banks,2799,2026-03-15
+PROD_CASE_01,Nova Clear Flex Case,Phone Cases,499,2025-01-01
+PROD_CASE_02,Nova Armor Shield Case,Phone Cases,799,2025-03-05
+PROD_CASE_03,Nova MagLeather Cover,Phone Cases,999,2025-05-12
+PROD_CASE_04,Nova Matte Silicone Case,Phone Cases,599,2025-07-20
+PROD_CASE_05,Nova Kickstand Hybrid Case,Phone Cases,899,2025-10-15
+PROD_WATCH_01,Nova Fit Pulse 2,Smart Watches,2999,2026-05-01
+PROD_WATCH_02,Nova Apex Watch Pro,Smart Watches,5499,2025-04-10
+PROD_WATCH_03,Nova Active Band 5,Smart Watches,1899,2025-06-01
+PROD_WATCH_04,Nova Horizon Calling Watch,Smart Watches,3999,2025-09-15
+PROD_WATCH_05,Nova Rugged GPS Watch,Smart Watches,6999,2026-01-20
+PROD_CHG_01,Nova QuickCharge 20W,Chargers,699,2025-01-20
+PROD_CHG_02,Nova GaN FastCharge 65W,Chargers,1899,2025-04-05
+PROD_CHG_03,Nova Dual USB-C Wall Adapter,Chargers,999,2025-07-11
+PROD_CHG_04,Nova Wireless Charging Pad 15W,Chargers,1499,2025-10-01
+PROD_CHG_05,Nova Car Fast Charger 45W,Chargers,799,2026-02-28
+PROD_SCR_01,Nova Guard Tempered Glass 9H,Screen Protectors,299,2025-01-05
+PROD_SCR_02,Nova Privacy Shield Glass,Screen Protectors,499,2025-03-25
+PROD_SCR_03,Nova Matte Anti-Glare Film,Screen Protectors,349,2025-06-15
+PROD_SCR_04,Nova UV Curved Glass,Screen Protectors,699,2025-09-01
+PROD_SCR_05,Nova Camera Lens Protector 2-Pack,Screen Protectors,249,2025-11-20
+PROD_SPK_01,Nova Boom 360 Speaker,Bluetooth Speakers,2499,2025-02-15
+PROD_SPK_02,Nova SoundBar Mini,Bluetooth Speakers,3999,2025-05-10
+PROD_SPK_03,Nova Pocket Party Speaker,Bluetooth Speakers,1299,2025-08-01
+PROD_SPK_04,Nova Outdoor Waterproof Speaker,Bluetooth Speakers,3299,2025-11-15
+PROD_SPK_05,Nova Studio Desk Speaker,Bluetooth Speakers,4999,2026-02-01

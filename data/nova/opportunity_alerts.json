@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ALERT_OPP_OPP_CASE_SCREEN_BUNDLE_1788332834",
+    "timestamp": "02 Sep 2026, 12:37 PM",
+    "type": "NEW_OPPORTUNITY",
+    "severity": "HIGH",
+    "title": "New High-Yield Opportunity: Promote Phone Case & Screen Protector Add-On Bundle",
+    "description": "Targeting 2,463 customers with expected revenue potential of INR 859,587.00.",
+    "target_url": "/campaigns",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE"
+  },
+  {
+    "id": "ALERT_DROP_PROD_EAR_01_1788332834",
+    "timestamp": "02 Sep 2026, 12:37 PM",
+    "type": "VELOCITY_DECLINE",
+    "severity": "MEDIUM",
+    "title": "Product Velocity Drop: Nova Pods Lite",
+    "description": "Weekly sales dropped from 100 units (W-3) to 62 units in W-1 (-0.1842% WoW change).",
+    "target_url": "/products",
+    "opportunity_id": "OPP_EARBUD_CROSSSELL"
+  },
+  {
+    "id": "ALERT_SURGE_PROD_WATCH_01_1788332834",
+    "timestamp": "02 Sep 2026, 12:37 PM",
+    "type": "DEMAND_SURGE",
+    "severity": "HIGH",
+    "title": "Emerging Product Demand Surge: Nova Fit Pulse 2",
+    "description": "Weekly velocity increased by +0.3636% WoW over recent transactions.",
+    "target_url": "/products",
+    "opportunity_id": "OPP_WATCH_SCALE_PROMO"
+  },
+  {
+    "id": "ALERT_OPP_SEC_OPP_EMERGING_PRODUCT_1788332834",
+    "timestamp": "02 Sep 2026, 12:37 PM",
+    "type": "SEGMENT_SIGNAL",
+    "severity": "MEDIUM",
+    "title": "Commercial Signal: Scale Inventory & Marketing for Emerging SKU: Nova Fit Pulse 2",
+    "description": "Affecting 75 customers with priority score of 164,576.00.",
+    "target_url": "/campaigns",
+    "opportunity_id": "OPP_EMERGING_PRODUCT"
+  }
+]

@@ -1,0 +1,1046 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-08-31T23:11:11.843654",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_EARBUD_CROSSSELL (Automated Earbud to Phone Case Cross-Sell Campaign)",
+    "output_summary": "High cross-sell velocity detected: Earbud purchasers exhibit a 36.4% conversion to Phone Cases within 7 days.",
+    "approver": null
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-08-31T23:11:11.844331",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated earbud_case_cross_sell",
+    "output_summary": "Proposed strategy: cross-sell",
+    "approver": null
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-08-31T23:11:11.844728",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_EARBUD_CROSSSELL",
+    "output_summary": "Campaign 'Nova Pods Companion Case Discount' (Budget: \u20b924,050.00, Discount: 15.0%)",
+    "approver": null
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-08-31T23:11:11.845116",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_EARBUD_CROSSSELL (Budget: \u20b924,050.00, Discount: 15.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-09-01T13:05:01.663055",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b95,000.00, Discount Max 15.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-09-01T13:05:01.675115",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_EARBUD_CROSSSELL (Nova Pods Companion Case Discount) [Limit: \u20b95,000.00, 15.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b924,050.00 exceeds policy maximum of \u20b95,000.00",
+    "approver": null
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-09-01T13:15:12.223199",
+    "agent": "MerchantSupervisor",
+    "action": "approve_campaign",
+    "input_summary": "Explicit approval for campaign CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "APPROVED & LAUNCHED by Merchant Admin (Razorpay Test Order: order_rzp_test_696d51d7)",
+    "approver": "Merchant Admin"
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-09-01T13:17:39.084911",
+    "agent": "EvaluationAgent",
+    "action": "evaluate_campaign",
+    "input_summary": "Evaluated performance for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Incremental Rev: \u20b9105,000.00, ROI: 320.0%",
+    "approver": null
+  },
+  {
+    "id": 9,
+    "timestamp": "2026-09-01T13:17:39.086116",
+    "agent": "MerchantSupervisor",
+    "action": "approve_campaign",
+    "input_summary": "Explicit approval for campaign CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "APPROVED & LAUNCHED by Merchant Admin (Predicted Rev: \u20b928,967.00, Actual Rev: \u20b9105,000.00, Delta: 262.48%)",
+    "approver": "Merchant Admin"
+  },
+  {
+    "id": 10,
+    "timestamp": "2026-09-01T13:30:44.501098",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b91,000.00, Discount Max 15.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 11,
+    "timestamp": "2026-09-01T13:33:59.362825",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b95,000.00, Discount Max 1.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 12,
+    "timestamp": "2026-09-01T14:07:35.317935",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 13,
+    "timestamp": "2026-09-01T14:07:35.322710",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 14,
+    "timestamp": "2026-09-01T14:09:15.374835",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 15,
+    "timestamp": "2026-09-01T14:09:15.379071",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 16,
+    "timestamp": "2026-09-01T14:09:43.594996",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 17,
+    "timestamp": "2026-09-01T14:09:43.598433",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-09-01T14:10:29.334291",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 19,
+    "timestamp": "2026-09-01T14:10:29.337404",
+    "agent": "ExperimentFramework",
+    "action": "execute_experiment",
+    "input_summary": "Ran 500 vs 500 experiment for earbud_case_cross_sell",
+    "output_summary": "Control Conv: 7.8%, AI Conv: 32.0%, Lift: 4.1x",
+    "approver": null
+  },
+  {
+    "id": 20,
+    "timestamp": "2026-09-01T14:31:22.160229",
+    "agent": "OpportunityAgent",
+    "action": "run_pipeline_refresh",
+    "input_summary": "Opportunity detection pipeline triggered on-demand",
+    "output_summary": "Discovered 6 opportunities & generated 4 real-time alerts",
+    "approver": null
+  },
+  {
+    "id": 21,
+    "timestamp": "2026-09-01T14:31:31.007851",
+    "agent": "OpportunityAgent",
+    "action": "run_pipeline_refresh",
+    "input_summary": "Opportunity detection pipeline triggered on-demand",
+    "output_summary": "Discovered 6 opportunities & generated 4 real-time alerts",
+    "approver": null
+  },
+  {
+    "id": 22,
+    "timestamp": "2026-09-01T14:32:35.716089",
+    "agent": "OpportunityAgent",
+    "action": "run_pipeline_refresh",
+    "input_summary": "Opportunity detection pipeline triggered on-demand",
+    "output_summary": "Discovered 6 opportunities & generated 4 real-time alerts",
+    "approver": null
+  },
+  {
+    "id": 23,
+    "timestamp": "2026-09-01T14:36:37.743248",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 24,
+    "timestamp": "2026-09-01T14:36:45.719249",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_EARBUD_CROSSSELL (Nova Pods Companion Case Discount) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b924,050.00 exceeds policy maximum of \u20b95,000.00; Discount 15.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 25,
+    "timestamp": "2026-09-01T14:36:47.010583",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_EARBUD_CROSSSELL (Nova Pods Companion Case Discount) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b924,050.00 exceeds policy maximum of \u20b95,000.00; Discount 15.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 26,
+    "timestamp": "2026-09-01T14:36:48.438530",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_EARBUD_CROSSSELL (Nova Pods Companion Case Discount) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b924,050.00 exceeds policy maximum of \u20b95,000.00; Discount 15.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 27,
+    "timestamp": "2026-09-01T14:37:23.046750",
+    "agent": "SimulationEngine",
+    "action": "simulate_campaign",
+    "input_summary": "Simulated campaign for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Conservative: \u20b923,732.00, Expected: \u20b928,967.00, Optimistic: \u20b933,853.00",
+    "approver": null
+  },
+  {
+    "id": 28,
+    "timestamp": "2026-09-01T14:37:27.583901",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 29,
+    "timestamp": "2026-09-01T14:37:29.684640",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 30,
+    "timestamp": "2026-09-01T14:37:31.128340",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 31,
+    "timestamp": "2026-09-01T14:37:35.707287",
+    "agent": "SimulationEngine",
+    "action": "simulate_campaign",
+    "input_summary": "Simulated campaign for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Conservative: \u20b923,732.00, Expected: \u20b928,967.00, Optimistic: \u20b933,853.00",
+    "approver": null
+  },
+  {
+    "id": 32,
+    "timestamp": "2026-09-01T14:37:38.283065",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 33,
+    "timestamp": "2026-09-01T14:37:44.192894",
+    "agent": "SimulationEngine",
+    "action": "simulate_campaign",
+    "input_summary": "Simulated campaign for CAMP_OPP_EARBUD_CROSSSELL",
+    "output_summary": "Conservative: \u20b9112,539.00, Expected: \u20b9124,422.00, Optimistic: \u20b9137,703.00",
+    "approver": null
+  },
+  {
+    "id": 34,
+    "timestamp": "2026-09-01T14:44:11.706910",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 35,
+    "timestamp": "2026-09-01T14:44:11.867316",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 36,
+    "timestamp": "2026-09-01T14:48:16.947780",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 37,
+    "timestamp": "2026-09-01T14:48:17.109091",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 38,
+    "timestamp": "2026-09-01T14:48:17.109927",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 39,
+    "timestamp": "2026-09-01T14:48:17.110935",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 40,
+    "timestamp": "2026-09-01T15:12:06.159281",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 41,
+    "timestamp": "2026-09-01T15:12:06.334000",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 42,
+    "timestamp": "2026-09-01T15:12:06.334737",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 43,
+    "timestamp": "2026-09-01T15:12:06.335697",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 44,
+    "timestamp": "2026-09-01T15:12:06.337195",
+    "agent": "Assistant",
+    "action": "create_campaign_draft",
+    "input_summary": "Assistant created campaign draft for opportunity 'Promote Phone Case & Screen Protector Add-On Bundle'",
+    "output_summary": "Draft Saved to Store: 'Essential Protection Kit Bundle (Case + Screen Glass)' (ID: CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255726, Status: PENDING_MERCHANT_APPROVAL)",
+    "approver": null
+  },
+  {
+    "id": 45,
+    "timestamp": "2026-09-01T15:13:14.265292",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 46,
+    "timestamp": "2026-09-01T15:13:14.424975",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 47,
+    "timestamp": "2026-09-01T15:13:14.425778",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 48,
+    "timestamp": "2026-09-01T15:13:14.426767",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 49,
+    "timestamp": "2026-09-01T15:13:14.436527",
+    "agent": "Assistant",
+    "action": "create_campaign_draft",
+    "input_summary": "Assistant created campaign draft for opportunity 'Promote Phone Case & Screen Protector Add-On Bundle'",
+    "output_summary": "Draft Saved to Store: 'Essential Protection Kit Bundle (Case + Screen Glass)' (ID: CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255794, Status: PENDING_MERCHANT_APPROVAL)",
+    "approver": null
+  },
+  {
+    "id": 50,
+    "timestamp": "2026-09-01T15:16:24.035575",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 51,
+    "timestamp": "2026-09-01T15:16:24.199975",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 52,
+    "timestamp": "2026-09-01T15:16:24.200910",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 53,
+    "timestamp": "2026-09-01T15:16:24.201950",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 54,
+    "timestamp": "2026-09-01T15:16:24.204253",
+    "agent": "Assistant",
+    "action": "create_campaign_draft",
+    "input_summary": "Assistant created campaign draft for opportunity 'Promote Phone Case & Screen Protector Add-On Bundle'",
+    "output_summary": "Draft Saved to Store: 'Essential Protection Kit Bundle (Case + Screen Glass)' (ID: CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255984, Status: PENDING_MERCHANT_APPROVAL)",
+    "approver": null
+  },
+  {
+    "id": 55,
+    "timestamp": "2026-09-01T15:16:56.468643",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 56,
+    "timestamp": "2026-09-01T15:16:56.674790",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 57,
+    "timestamp": "2026-09-01T15:16:56.675891",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 58,
+    "timestamp": "2026-09-01T15:16:56.677111",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 59,
+    "timestamp": "2026-09-01T15:16:56.686596",
+    "agent": "Assistant",
+    "action": "create_campaign_draft",
+    "input_summary": "Assistant created campaign draft for opportunity 'Promote Phone Case & Screen Protector Add-On Bundle'",
+    "output_summary": "Draft Saved to Store: 'Essential Protection Kit Bundle (Case + Screen Glass)' (ID: CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788256016, Status: PENDING_MERCHANT_APPROVAL)",
+    "approver": null
+  },
+  {
+    "id": 60,
+    "timestamp": "2026-09-02T10:34:25.588873",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 61,
+    "timestamp": "2026-09-02T10:34:29.293156",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255794 (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 62,
+    "timestamp": "2026-09-02T10:34:42.906209",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788255984 (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b95,000.00, 1.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Budget \u20b925,000.00 exceeds policy maximum of \u20b95,000.00; Discount 20.0% exceeds policy maximum of 1.0%",
+    "approver": null
+  },
+  {
+    "id": 63,
+    "timestamp": "2026-09-02T11:18:46.109497",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 64,
+    "timestamp": "2026-09-02T11:18:46.265947",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 65,
+    "timestamp": "2026-09-02T11:18:46.266979",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 66,
+    "timestamp": "2026-09-02T11:18:46.268104",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 67,
+    "timestamp": "2026-09-02T11:18:46.269084",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_a0124d9f (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 68,
+    "timestamp": "2026-09-02T11:20:54.587641",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 69,
+    "timestamp": "2026-09-02T11:20:54.768801",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 70,
+    "timestamp": "2026-09-02T11:20:54.770085",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 71,
+    "timestamp": "2026-09-02T11:20:54.771689",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b950,000.00, 25.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Duplicate campaign detected: ID 'CAMP_OPP_CASE_SCREEN_BUNDLE' already exists",
+    "approver": null
+  },
+  {
+    "id": 72,
+    "timestamp": "2026-09-02T11:22:51.936983",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 73,
+    "timestamp": "2026-09-02T11:22:52.106279",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 74,
+    "timestamp": "2026-09-02T11:22:52.107393",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 75,
+    "timestamp": "2026-09-02T11:22:52.108793",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Essential Protection Kit Bundle (Case + Screen Glass)) [Limit: \u20b950,000.00, 25.0%]",
+    "output_summary": "REJECTED: Policy violation(s): Duplicate campaign detected: ID 'CAMP_OPP_CASE_SCREEN_BUNDLE' already exists",
+    "approver": null
+  },
+  {
+    "id": 76,
+    "timestamp": "2026-09-02T12:37:14.906925",
+    "agent": "OpportunityAgent",
+    "action": "run_pipeline_refresh",
+    "input_summary": "Opportunity detection pipeline triggered on-demand",
+    "output_summary": "Discovered 6 opportunities & generated 4 real-time alerts",
+    "approver": null
+  },
+  {
+    "id": 77,
+    "timestamp": "2026-09-03T10:15:05.454774",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 78,
+    "timestamp": "2026-09-03T10:15:05.762115",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 79,
+    "timestamp": "2026-09-03T10:15:05.764228",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 80,
+    "timestamp": "2026-09-03T10:15:05.766850",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 81,
+    "timestamp": "2026-09-03T10:15:05.769417",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_9fad7be7 (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 82,
+    "timestamp": "2026-09-03T10:16:00.978929",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 83,
+    "timestamp": "2026-09-03T10:16:01.448476",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 84,
+    "timestamp": "2026-09-03T10:16:01.451723",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 85,
+    "timestamp": "2026-09-03T10:16:01.455595",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 86,
+    "timestamp": "2026-09-03T10:16:01.459052",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_d35b7aaa (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 87,
+    "timestamp": "2026-09-03T10:19:50.457876",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 88,
+    "timestamp": "2026-09-03T10:19:50.814696",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 89,
+    "timestamp": "2026-09-03T10:19:50.816913",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 90,
+    "timestamp": "2026-09-03T10:19:50.819597",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 91,
+    "timestamp": "2026-09-03T10:19:50.822012",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_9b5af16e (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 92,
+    "timestamp": "2026-09-03T10:23:06.050985",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 93,
+    "timestamp": "2026-09-03T10:23:06.353264",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 94,
+    "timestamp": "2026-09-03T10:23:06.356822",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 95,
+    "timestamp": "2026-09-03T10:23:06.360840",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 96,
+    "timestamp": "2026-09-03T10:23:06.364452",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_3ddce440 (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 97,
+    "timestamp": "2026-09-03T10:24:15.180320",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 98,
+    "timestamp": "2026-09-03T10:24:15.459915",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 99,
+    "timestamp": "2026-09-03T10:24:15.462452",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 100,
+    "timestamp": "2026-09-03T10:24:15.465033",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 101,
+    "timestamp": "2026-09-03T10:24:15.467287",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_90473d20 (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 102,
+    "timestamp": "2026-09-03T10:25:14.335684",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 103,
+    "timestamp": "2026-09-03T10:25:14.741595",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 104,
+    "timestamp": "2026-09-03T10:25:14.744029",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 105,
+    "timestamp": "2026-09-03T10:25:14.746752",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 106,
+    "timestamp": "2026-09-03T10:25:14.749309",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_10c4618e (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 107,
+    "timestamp": "2026-09-03T10:26:19.153331",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 108,
+    "timestamp": "2026-09-03T10:26:19.448766",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 109,
+    "timestamp": "2026-09-03T10:26:19.452666",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 110,
+    "timestamp": "2026-09-03T10:26:19.456979",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 111,
+    "timestamp": "2026-09-03T10:26:19.461300",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_b0cc02fe (55920 paise)",
+    "approver": null
+  },
+  {
+    "id": 112,
+    "timestamp": "2026-09-03T10:27:20.500606",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 113,
+    "timestamp": "2026-09-03T10:27:20.795333",
+    "agent": "StrategyAgent",
+    "action": "propose_strategy",
+    "input_summary": "Evaluated bundle_cross_sell",
+    "output_summary": "Proposed strategy: bundle (Referenced Memories: ['pattern_weekend_conversion_peak', 'pref_merchant_discount_cap'])",
+    "approver": null
+  },
+  {
+    "id": 114,
+    "timestamp": "2026-09-03T10:27:20.798764",
+    "agent": "CampaignAgent",
+    "action": "generate_campaign",
+    "input_summary": "Created campaign for OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Campaign 'Essential Protection Kit Bundle (Case + Screen Glass)' (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "approver": null
+  },
+  {
+    "id": 115,
+    "timestamp": "2026-09-03T10:27:20.801921",
+    "agent": "SupervisorAgent",
+    "action": "evaluate_campaign_risk",
+    "input_summary": "Evaluated CAMP_OPP_CASE_SCREEN_BUNDLE (Budget: \u20b925,000.00, Discount: 20.0%)",
+    "output_summary": "PENDING_MERCHANT_APPROVAL (Medium Risk)",
+    "approver": null
+  },
+  {
+    "id": 116,
+    "timestamp": "2026-09-03T10:27:20.804910",
+    "agent": "RazorpayTestGateway",
+    "action": "create_test_order",
+    "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Razorpay Test Order ID: order_rzp_test_61958622 (55920 paise)",
+    "approver": null
+  }
+]

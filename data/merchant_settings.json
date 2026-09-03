@@ -1,0 +1,8 @@
+{
+  "max_discount_percent": 25.0,
+  "max_campaign_budget": 50000.0,
+  "max_campaigns_per_day": 10,
+  "auto_approve_analysis": false,
+  "auto_approve_draft_campaigns": false,
+  "require_approval_to_launch": true
+}

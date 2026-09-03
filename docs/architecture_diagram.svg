@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #F7F2EA; }
+      .box { fill: #FFFDFC; stroke: #DED5CB; stroke-width: 2; rx: 12; }
+      .header-box { fill: #18324A; rx: 8; }
+      .title { font-family: system-ui, sans-serif; font-weight: 800; font-size: 20px; fill: #3B241C; }
+      .subtitle { font-family: system-ui, sans-serif; font-size: 13px; fill: #756B64; }
+      .box-title { font-family: system-ui, sans-serif; font-weight: 700; font-size: 15px; fill: #3B241C; }
+      .box-text { font-family: monospace; font-size: 12px; fill: #756B64; }
+      .header-text { font-family: system-ui, sans-serif; font-weight: 700; font-size: 14px; fill: #FFFDFC; }
+      .accent-badge { fill: #F4A261; rx: 4; }
+      .accent-text { font-family: system-ui, sans-serif; font-weight: 700; font-size: 11px; fill: #3B241C; }
+      .arrow { stroke: #3B241C; stroke-width: 2; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3B241C" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="700" class="bg" />
+
+  <!-- Header Title -->
+  <text x="50" y="45" class="title">Meridian Platform Architecture</text>
+  <text x="50" y="68" class="subtitle">Multi-Agent E-Commerce Commercial Intelligence System (NOVA Merchant)</text>
+
+  <!-- Layer 1: Next.js Frontend UI -->
+  <g transform="translate(50, 95)">
+    <rect width="900" height="120" class="box" />
+    <rect x="15" y="15" width="200" height="28" class="header-box" />
+    <text x="25" y="34" class="header-text">Frontend Layer (Next.js 14)</text>
+    
+    <rect x="15" y="55" width="260" height="50" rx="8" fill="#F7F2EA" stroke="#DED5CB" />
+    <text x="25" y="75" class="box-title">Commercial Dashboard</text>
+    <text x="25" y="93" class="box-text">app/page.tsx (Opportunities)</text>
+
+    <rect x="290" y="55" width="260" height="50" rx="8" fill="#F7F2EA" stroke="#DED5CB" />
+    <text x="300" y="75" class="box-title">Campaign Manager</text>
+    <text x="300" y="93" class="box-text">app/campaigns/page.tsx</text>
+
+    <rect x="565" y="55" width="320" height="50" rx="8" fill="#F7F2EA" stroke="#DED5CB" />
+    <text x="575" y="75" class="box-title">AI Activity & Chat Panel</text>
+    <text x="575" y="93" class="box-text">app/ai-activity/page.tsx + ChatPanel</text>
+  </g>
+
+  <!-- Flow Arrow 1 -->
+  <line x1="500" y1="215" x2="500" y2="245" class="arrow" />
+
+  <!-- Layer 2: FastAPI REST Layer -->
+  <g transform="translate(50, 250)">
+    <rect width="900" height="100" class="box" />
+    <rect x="15" y="15" width="200" height="28" class="header-box" />
+    <text x="25" y="34" class="header-text">FastAPI REST Layer (Python)</text>
+
+    <text x="25" y="65" class="box-text">/api/opportunities | /api/segments | /api/products/trends</text>
+    <text x="25" y="85" class="box-text">/api/pipeline/run-campaign | /api/campaigns/{id}/simulate | /api/audit-log | /api/assistant</text>
+  </g>
+
+  <!-- Flow Arrow 2 -->
+  <line x1="280" y1="350" x2="280" y2="380" class="arrow" />
+  <line x1="720" y1="350" x2="720" y2="380" class="arrow" />
+
+  <!-- Layer 3: Analytics Engine & Multi-Agent Layer -->
+  <g transform="translate(50, 385)">
+    <!-- Analytics Box -->
+    <rect x="0" y="0" width="430" height="200" class="box" />
+    <rect x="15" y="15" width="240" height="28" class="header-box" />
+    <text x="25" y="34" class="header-text">Deterministic Analytics Engine</text>
+    <text x="25" y="65" class="box-title">analytics.py</text>
+    <text x="25" y="85" class="box-text">• RFM Customer Segmentation</text>
+    <text x="25" y="105" class="box-text">• Market Basket Analysis (Lift & Support)</text>
+    <text x="25" y="125" class="box-text">• SKU Rolling Sales Velocity (Emerging/Declining)</text>
+    <text x="25" y="145" class="box-text">• Priority Score Opportunity Model</text>
+    <text x="25" y="175" class="box-text">Data: /data/nova/ (35 SKUs, 2k Cust, 10k Trans)</text>
+
+    <!-- Multi-Agent Box -->
+    <rect x="470" y="0" width="430" height="200" class="box" />
+    <rect x="485" y="15" width="240" height="28" class="header-box" />
+    <text x="495" y="34" class="header-text">Multi-Agent Intelligence Layer</text>
+    <text x="495" y="65" class="box-text">• OpportunityAgent (Evidence-Citing Explanation)</text>
+    <text x="495" y="85" class="box-text">• StrategyAgent (6 Standard Tactics Selection)</text>
+    <text x="495" y="105" class="box-text">• CampaignAgent (Audience, Budget, Offer, Message)</text>
+    <text x="495" y="125" class="box-text">• EvaluationAgent (Incremental Revenue & ROI %)</text>
+    <text x="495" y="145" class="box-text">• SimulationEngine (1,000 Bootstrap Resamples)</text>
+    <text x="495" y="165" class="box-text">• Assistant (Function-Calling Router)</text>
+  </g>
+
+  <!-- Flow Arrow 3 -->
+  <line x1="685" y1="585" x2="685" y2="615" class="arrow" />
+
+  <!-- Layer 4: Supervisor Governance & Razorpay Sandbox -->
+  <g transform="translate(50, 620)">
+    <rect width="900" height="65" class="box" />
+    <rect x="15" y="15" width="300" height="35" rx="6" fill="#4A7C59" />
+    <text x="25" y="37" font-family="system-ui" font-weight="700" font-size="13" fill="#FFFDFC">Supervisor Agent (Plain Python Rules)</text>
+    <text x="330" y="37" class="box-text">Budget &lt;= ₹50k | Discount &lt;= 25% | Risk-Tier Guardrails</text>
+
+    <rect x="660" y="15" width="220" height="35" rx="6" fill="#F4A261" />
+    <text x="670" y="37" font-family="system-ui" font-weight="700" font-size="13" fill="#3B241C">Razorpay Test Gateway (rzp_test_)</text>
+  </g>
+</svg>
