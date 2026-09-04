@@ -1,6 +1,6 @@
 from typing import Dict, Any, List
 from agents.audit_logger import audit_logger
-from merchant_settings import merchant_settings_manager
+from services.merchant_settings import merchant_settings_manager
 
 class SupervisorAgent:
     def __init__(self):

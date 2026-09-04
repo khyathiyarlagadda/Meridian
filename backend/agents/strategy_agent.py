@@ -2,7 +2,7 @@ import os
 import json
 from typing import Dict, Any, List
 from agents.audit_logger import audit_logger
-from ai_memory import initialize_or_load_memory, record_memory_usage
+from services.ai_memory import initialize_or_load_memory, record_memory_usage
 
 ALLOWED_STRATEGIES = [
     "cross-sell",
@@ -16,6 +16,10 @@ ALLOWED_STRATEGIES = [
 class StrategyAgent:
     def __init__(self):
         self.api_key = os.getenv("ANTHROPIC_API_KEY")
+
+    def recommend_strategy(self, opportunity_analysis: Dict[str, Any]) -> Dict[str, Any]:
+        opp_type = opportunity_analysis.get("opportunity_type") or opportunity_analysis.get("type") or "bundle_cross_sell"
+        return self.propose_strategy(opportunity_analysis, opp_type)
 
     def propose_strategy(self, opportunity_analysis: Dict[str, Any], opp_type: str) -> Dict[str, Any]:
         """

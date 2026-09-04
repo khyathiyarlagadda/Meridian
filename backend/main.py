@@ -6,18 +6,27 @@ import json
 import os
 from datetime import datetime
 
-from analytics import load_data, run_rfm_analysis, run_market_basket_analysis, run_product_velocity_trends, generate_opportunities
+from services.analytics import load_data, run_rfm_analysis, run_market_basket_analysis, run_product_velocity_trends, generate_opportunities
 from agents.opportunity_agent import OpportunityAgent
 from agents.strategy_agent import StrategyAgent
 from agents.campaign_agent import CampaignAgent
 from agents.evaluation_agent import EvaluationAgent
 from agents.supervisor_agent import supervisor_agent
 from agents.audit_logger import audit_logger
-from simulation import run_campaign_simulation
-from experiment import run_controlled_experiment
-from razorpay_client import razorpay_test_client
-from assistant import assistant
-from merchant_settings import merchant_settings_manager
+from services.simulation import run_campaign_simulation
+from services.experiment import run_controlled_experiment
+from services.razorpay_client import razorpay_test_client
+from services.assistant import assistant
+from services.merchant_settings import merchant_settings_manager
+from services.supabase_db import get_campaigns, save_campaign, get_transactions, record_transaction
+from models.schemas import (
+    ApprovalRequest,
+    CampaignInput,
+    AssistantQueryRequest,
+    GuardrailsInput,
+    CreateOrderRequest,
+    VerifyPaymentRequest
+)
 
 CAMPAIGNS_FILE = r"C:\Dev\Meridian\data\campaigns.json"
 RECORDED_TX_FILE = r"C:\Dev\Meridian\data\recorded_transactions.json"
@@ -35,14 +44,11 @@ app.add_middleware(
 products, customers, transactions, order_items = load_data()
 
 def load_stored_campaigns() -> List[Dict[str, Any]]:
-    if os.path.exists(CAMPAIGNS_FILE):
-        try:
-            with open(CAMPAIGNS_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception:
-            pass
+    c_list = get_campaigns()
+    if c_list and len(c_list) > 0:
+        return c_list
     
-    return [
+    defaults = [
         {
             "id": "CAMP_OPP_EARBUD_CROSSSELL",
             "opportunity_id": "OPP_EARBUD_CROSSSELL",
@@ -92,52 +98,15 @@ def load_stored_campaigns() -> List[Dict[str, Any]]:
             "incremental_revenue_inr": 42000.0
         }
     ]
+    for d in defaults:
+        save_campaign(d)
+    return defaults
 
 def save_stored_campaigns(campaigns: List[Dict[str, Any]]):
-    os.makedirs(os.path.dirname(CAMPAIGNS_FILE), exist_ok=True)
-    with open(CAMPAIGNS_FILE, "w", encoding="utf-8") as f:
-        json.dump(campaigns, f, indent=2)
+    for c in campaigns:
+        save_campaign(c)
 
-class ApprovalRequest(BaseModel):
-    approver: str = "Merchant Admin"
-    notes: Optional[str] = None
 
-class CampaignInput(BaseModel):
-    id: Optional[str] = None
-    opportunity_id: str
-    title: str
-    strategy: str
-    target_audience: str
-    offer: str
-    discount_pct: float
-    budget_inr: float
-    message: str
-    timing: str
-    action_type: Optional[str] = "launch_campaign"
-
-class AssistantQueryRequest(BaseModel):
-    query: str
-
-class GuardrailsInput(BaseModel):
-    max_discount_percent: Optional[float] = 25.0
-    max_campaign_budget: Optional[float] = 50000.0
-    max_campaigns_per_day: Optional[int] = 10
-    auto_approve_analysis: Optional[bool] = False
-    auto_approve_draft_campaigns: Optional[bool] = False
-    require_approval_to_launch: Optional[bool] = True
-
-class CreateOrderRequest(BaseModel):
-    customer_id: Optional[str] = "CUST_1001"
-    product_id: Optional[str] = "PROD_CASE_01"
-    quantity: Optional[int] = 1
-
-class VerifyPaymentRequest(BaseModel):
-    razorpay_order_id: str
-    razorpay_payment_id: str
-    razorpay_signature: str
-    customer_id: Optional[str] = "CUST_1001"
-    product: Optional[str] = "Nova Premium Phone Case"
-    amount_inr: Optional[float] = 594.15
 
 @app.get("/api/health")
 def health_check():
@@ -205,8 +174,8 @@ def get_campaigns():
 
 @app.get("/api/memory")
 def get_ai_memory():
-    from ai_memory import get_all_memories
-    memories = get_all_memories()
+    from ai_memory import initialize_or_load_memory
+    memories = initialize_or_load_memory()
     return {"memories": memories, "total": len(memories)}
 
 @app.get("/api/audit-log")
@@ -486,16 +455,9 @@ def verify_checkout_payment(id: str, req: VerifyPaymentRequest):
         )
         raise HTTPException(status_code=400, detail="Invalid Razorpay payment signature. Request rejected.")
 
-    # 2. Record transaction linked to campaign, customer, razorpay details
-    recorded_txs = []
-    if os.path.exists(RECORDED_TX_FILE):
-        try:
-            with open(RECORDED_TX_FILE, "r", encoding="utf-8") as f:
-                recorded_txs = json.load(f)
-        except Exception:
-            recorded_txs = []
-
-    tx_id = f"TX_RZP_{len(recorded_txs) + 1001}"
+    # 2. Record transaction linked to campaign, customer, razorpay details via Supabase DB
+    existing_txs = get_transactions()
+    tx_id = f"TX_RZP_{len(existing_txs) + 1001}"
     now_iso = datetime.now().isoformat()
 
     tx_entry = {
@@ -511,11 +473,7 @@ def verify_checkout_payment(id: str, req: VerifyPaymentRequest):
         "status": "COMPLETED",
         "timestamp": now_iso
     }
-    recorded_txs.append(tx_entry)
-
-    os.makedirs(os.path.dirname(RECORDED_TX_FILE), exist_ok=True)
-    with open(RECORDED_TX_FILE, "w", encoding="utf-8") as f:
-        json.dump(recorded_txs, f, indent=2)
+    tx_entry = record_transaction(tx_entry)
 
     # 3. Log Audit Step 1: "Test payment successful"
     audit_logger.log_action(
@@ -566,13 +524,7 @@ def verify_checkout_payment(id: str, req: VerifyPaymentRequest):
 
 @app.get("/api/transactions")
 def get_recorded_transactions():
-    recorded_txs = []
-    if os.path.exists(RECORDED_TX_FILE):
-        try:
-            with open(RECORDED_TX_FILE, "r", encoding="utf-8") as f:
-                recorded_txs = json.load(f)
-        except Exception:
-            recorded_txs = []
+    recorded_txs = get_transactions()
     return {
         "transactions": recorded_txs,
         "count": len(recorded_txs)

@@ -109,5 +109,27 @@
     "id": "CAMP_ASSISTANT_OPP_CASE_SCREEN_BUNDLE_1788256016",
     "status": "PENDING_MERCHANT_APPROVAL",
     "risk_tier": "high"
+  },
+  {
+    "id": "CAMP_SUPABASE_PERSISTENCE_TEST",
+    "merchant_id": "MERCHANT_NOVA_001",
+    "opportunity_id": "OPP_CASE_SCREEN_BUNDLE",
+    "title": "Supabase Cloud Database Sync Campaign",
+    "strategy": "bundle",
+    "target_audience": "Multi-item shoppers across devices",
+    "audience_size": 2463,
+    "offer": "Save 20% on Protection Bundle",
+    "discount_pct": 20.0,
+    "budget_inr": 25000.0,
+    "message": "Promotional message",
+    "timing": "Immediate",
+    "status": "LAUNCHED",
+    "risk_tier": "medium",
+    "roi_pct": 320.0,
+    "incremental_revenue_inr": 105000.0,
+    "predicted_performance": {},
+    "actual_performance": {},
+    "performance_delta": {},
+    "updated_at": "2026-09-04T12:10:07.027596"
   }
 ]

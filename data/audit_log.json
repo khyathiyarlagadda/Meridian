@@ -1303,5 +1303,104 @@
     "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
     "output_summary": "Razorpay order created",
     "approver": null
+  },
+  {
+    "id": 146,
+    "timestamp": "2026-09-04T11:58:57.846471",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 147,
+    "timestamp": "2026-09-04T11:59:01.109978",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
+  },
+  {
+    "id": 148,
+    "timestamp": "2026-09-04T12:04:39.244593",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 149,
+    "timestamp": "2026-09-04T12:04:42.570339",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
+  },
+  {
+    "id": 150,
+    "timestamp": "2026-09-04T12:05:46.584764",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 151,
+    "timestamp": "2026-09-04T12:05:49.838555",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
+  },
+  {
+    "id": 152,
+    "timestamp": "2026-09-04T12:06:21.390783",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 153,
+    "timestamp": "2026-09-04T12:09:20.617983",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 154,
+    "timestamp": "2026-09-04T12:09:23.904710",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
+  },
+  {
+    "id": 155,
+    "timestamp": "2026-09-04T12:10:10.342116",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 156,
+    "timestamp": "2026-09-04T12:10:13.586341",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
   }
 ]
