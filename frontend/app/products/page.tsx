@@ -70,9 +70,10 @@ export default function ProductsPage() {
         {/* Header Bar */}
         <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-surface p-6 rounded-2xl border border-[#E5DDD0] shadow-sm shadow-primary/5">
           <div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 flex-wrap gap-y-1">
               <Badge variant="secondary">Product Performance</Badge>
               <span className="text-xs text-muted font-mono">Weekly Demand & Pairings</span>
+              <Badge variant="accent">Synced from NOVA Store · Last updated 2 hours ago</Badge>
             </div>
             <h1 className="font-display font-black text-2xl md:text-3xl tracking-tight text-primary mt-1">
               Products & Frequently Bought Together

@@ -1,20 +1,21 @@
-node_modules/
-.next/
-out/
-build/
-dist/
-
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
 venv/
 .venv/
-env/
 
-# IDE & OS
+# Environment
+.env
+.env.*
+
+# Node
+node_modules/
+
+# Build
+dist/
+build/
+.next/
+
+# OS
 .DS_Store
 Thumbs.db
-.vscode/
-.idea/
-*.log

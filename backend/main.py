@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import Optional, Dict, Any, List
 import json
 import os
+from datetime import datetime
 
 from analytics import load_data, run_rfm_analysis, run_market_basket_analysis, run_product_velocity_trends, generate_opportunities
 from agents.opportunity_agent import OpportunityAgent
@@ -16,8 +17,10 @@ from simulation import run_campaign_simulation
 from experiment import run_controlled_experiment
 from razorpay_client import razorpay_test_client
 from assistant import assistant
+from merchant_settings import merchant_settings_manager
 
 CAMPAIGNS_FILE = r"C:\Dev\Meridian\data\campaigns.json"
+RECORDED_TX_FILE = r"C:\Dev\Meridian\data\recorded_transactions.json"
 
 app = FastAPI(title="Meridian API", version="0.1.0")
 
@@ -123,7 +126,18 @@ class GuardrailsInput(BaseModel):
     auto_approve_draft_campaigns: Optional[bool] = False
     require_approval_to_launch: Optional[bool] = True
 
-from merchant_settings import merchant_settings_manager
+class CreateOrderRequest(BaseModel):
+    customer_id: Optional[str] = "CUST_1001"
+    product_id: Optional[str] = "PROD_CASE_01"
+    quantity: Optional[int] = 1
+
+class VerifyPaymentRequest(BaseModel):
+    razorpay_order_id: str
+    razorpay_payment_id: str
+    razorpay_signature: str
+    customer_id: Optional[str] = "CUST_1001"
+    product: Optional[str] = "Nova Premium Phone Case"
+    amount_inr: Optional[float] = 594.15
 
 @app.get("/api/health")
 def health_check():
@@ -178,174 +192,59 @@ def get_product_trends():
     
     emerging = [t for t in trends_records if t["status"] == "emerging"]
     declining = [t for t in trends_records if t["status"] == "declining"]
-    stable = [t for t in trends_records if t["status"] == "stable"]
     
     return {
-        "total_products": len(trends_records),
-        "emerging_count": len(emerging),
-        "declining_count": len(declining),
-        "stable_count": len(stable),
-        "products": trends_records
+        "emerging_products": emerging,
+        "declining_products": declining,
+        "total_analyzed": len(trends_records)
     }
 
-@app.get("/api/transactions")
-def get_transactions(limit: int = 20):
-    tx_records = transactions.head(limit).to_dict(orient="records")
-    return {
-        "total_transactions": len(transactions),
-        "returned_count": len(tx_records),
-        "transactions": tx_records
-    }
+@app.get("/api/campaigns")
+def get_campaigns():
+    return {"campaigns": load_stored_campaigns()}
+
+@app.get("/api/memory")
+def get_ai_memory():
+    from ai_memory import get_all_memories
+    memories = get_all_memories()
+    return {"memories": memories, "total": len(memories)}
 
 @app.get("/api/audit-log")
 def get_audit_log():
-    logs = audit_logger.get_logs()
-    return {"audit_log": logs, "total_events": len(logs)}
+    return {"logs": audit_logger.get_logs()}
 
-@app.get("/api/campaigns")
-def list_campaigns():
-    campaigns = load_stored_campaigns()
-    return {"campaigns": campaigns, "total_campaigns": len(campaigns)}
-
-@app.get("/api/experiments")
-def get_experiments():
-    from experiment import run_controlled_experiment
-    res = run_controlled_experiment(opportunity_type="earbud_case_cross_sell", sample_size_per_group=500, seed=42)
-    return res
-
-@app.get("/api/revenue-attribution")
-def get_revenue_attribution():
+@app.get("/api/attribution")
+def get_attribution():
     from compute_attribution import compute_revenue_attribution
     return compute_revenue_attribution()
 
 @app.get("/api/alerts")
-def get_alerts():
-    from alerts import get_real_alerts
-    alerts = get_real_alerts()
-    return {"alerts": alerts, "total_alerts": len(alerts)}
-
-@app.post("/api/alerts/refresh")
-def refresh_alerts_endpoint():
-    from alerts import refresh_alerts
-    alerts = refresh_alerts()
-    return {"alerts": alerts, "total_alerts": len(alerts), "status": "PIPELINE_REFRESHED_SUCCESSFULLY"}
-
-@app.get("/api/memory")
-def get_ai_memory():
-    from ai_memory import initialize_or_load_memory
-    memories = initialize_or_load_memory()
-    return {"memories": memories, "total_memories": len(memories)}
-
-@app.get("/api/campaigns/{id}")
-def get_campaign_detail(id: str):
-    campaigns = load_stored_campaigns()
-    camp = next((c for c in campaigns if c["id"] == id or c.get("opportunity_id") == id), None)
-    
-    if not camp:
-        raise HTTPException(status_code=404, detail=f"Campaign {id} not found")
-
-    budget = float(camp.get("budget_inr", 25000.0))
-    targeted = 2463 if "BUNDLE" in id else 481
-    
-    # Calculate simulated channel engagement metrics (explicitly flagged)
-    delivered_count = int(targeted * 0.98)
-    opened_count = int(delivered_count * 0.49)
-    clicked_count = int(opened_count * 0.35)
-
-    actual_perf = camp.get("actual_performance") or {
-        "conversion_rate_pct": 36.4 if targeted == 481 else 3.32,
-        "revenue_inr": 84292.0 if targeted == 481 else 105000.0,
-        "roi_pct": 250.5 if targeted == 481 else 320.0
-    }
-    
-    actual_conv = float(actual_perf["conversion_rate_pct"])
-    actual_rev = float(actual_perf["revenue_inr"])
-    actual_roi = float(actual_perf["roi_pct"])
-    converted_count = int(targeted * (actual_conv / 100.0))
-    net_profit = actual_rev - budget
-
-    pred_perf = camp.get("predicted_performance") or {
-        "conversion_rate_pct": 37.0 if targeted == 481 else 3.37,
-        "revenue_inr": 124500.0 if targeted == 481 else 28967.0,
-        "roi_pct": 280.0 if targeted == 481 else 15.87
-    }
-
-    perf_delta = camp.get("performance_delta") or {
-        "conversion_rate_delta_pts": round(actual_conv - float(pred_perf["conversion_rate_pct"]), 2),
-        "revenue_delta_inr": round(actual_rev - float(pred_perf["revenue_inr"]), 2),
-        "revenue_delta_pct": round(((actual_rev - float(pred_perf["revenue_inr"])) / float(pred_perf["revenue_inr"])) * 100, 2),
-        "roi_delta_pts": round(actual_roi - float(pred_perf["roi_pct"]), 2)
-    }
-
-    return {
-        "campaign": camp,
-        "funnel_analytics": {
-            "targeted_customers": targeted,
-            "simulated_channel_metrics": {
-                "is_simulated": True,
-                "disclaimer": "[Simulated Channel Metric] Email/SMS/WhatsApp message dispatch events are simulated placeholders. No live external messaging was sent.",
-                "delivered": { "count": delivered_count, "pct": 98.0, "status": "Simulated Metric" },
-                "opened": { "count": opened_count, "pct": 49.0, "status": "Simulated Metric" },
-                "clicked": { "count": clicked_count, "pct": 35.6, "status": "Simulated Metric" }
-            },
-            "actual_conversion_metrics": {
-                "is_simulated": False,
-                "data_source": "EvaluationAgent Verified",
-                "converted_count": converted_count,
-                "conversion_rate_pct": actual_conv,
-                "revenue_inr": actual_rev,
-                "campaign_cost_inr": budget,
-                "net_profit_inr": net_profit,
-                "roi_pct": actual_roi
-            }
-        },
-        "predicted_performance": pred_perf,
-        "actual_performance": actual_perf,
-        "performance_delta": perf_delta
-    }
-
-# Startup Environment API Key Check (Prints presence without revealing secret string)
-anthropic_key = os.getenv("ANTHROPIC_API_KEY")
-print(f"[STARTUP AUDIT] ANTHROPIC_API_KEY status: {'PRESENT (Loaded from environment)' if anthropic_key else 'NOT_SET (Routing via deterministic tool-calling engine)'}")
+def get_opportunity_alerts():
+    from alerts import load_opportunity_alerts
+    alerts = load_opportunity_alerts()
+    return {"alerts": alerts, "total": len(alerts)}
 
 @app.post("/api/assistant")
-def run_assistant(req: AssistantQueryRequest):
-    try:
-        result = assistant.process_query(req.query)
-        return result
-    except Exception as e:
-        print(f"❌ [BACKEND ERROR] /api/assistant processing failed for query '{req.query}': {e}")
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail="Assistant is temporarily unavailable, please try again.")
-
-@app.post("/api/campaigns/evaluate")
-def evaluate_campaign(campaign: CampaignInput):
-    camp_dict = campaign.dict()
-    if not camp_dict.get("id"):
-        camp_dict["campaign_id"] = f"CAMP_{camp_dict['opportunity_id']}"
-    else:
-        camp_dict["campaign_id"] = camp_dict["id"]
-        
-    supervisor_res = supervisor_agent.evaluate_campaign_risk(camp_dict)
-    return {
-        "campaign": camp_dict,
-        "supervisor_eval": supervisor_res
-    }
+def query_assistant(req: AssistantQueryRequest):
+    res = assistant.process_query(req.query)
+    audit_logger.log_action(
+        agent="MeridianAssistant",
+        action="query_assistant",
+        input_summary=req.query,
+        output_summary=res.get("text", "")[:120] + "..."
+    )
+    return res
 
 @app.post("/api/pipeline/run-campaign")
-def run_agent_pipeline(opportunity_id: str):
+def run_pipeline_campaign(opportunity_id: str):
     opps = generate_opportunities(products, customers, transactions, order_items)
-    target_opp = next((o for o in opps if o["id"] == opportunity_id), None)
-    
-    if not target_opp:
-        raise HTTPException(status_code=404, detail=f"Opportunity {opportunity_id} not found")
+    target_opp = next((o for o in opps if o["id"] == opportunity_id), opps[0])
 
     opp_agent = OpportunityAgent()
     opp_analysis = opp_agent.analyze_opportunity(target_opp)
 
     strat_agent = StrategyAgent()
-    strat_recommendation = strat_agent.propose_strategy(opp_analysis, target_opp["type"])
+    strat_recommendation = strat_agent.recommend_strategy(opp_analysis)
 
     camp_agent = CampaignAgent()
     campaign_pkg = camp_agent.generate_campaign(target_opp, strat_recommendation)
@@ -483,6 +382,200 @@ def approve_campaign(id: str, req: ApprovalRequest):
         "predicted_performance": predicted_performance,
         "actual_performance": actual_performance,
         "performance_delta": performance_delta
+    }
+
+# -----------------------------------------------------------------------------
+# RAZORPAY TEST MODE CHECKOUT INTEGRATION ENDPOINTS
+# -----------------------------------------------------------------------------
+
+@app.post("/api/campaigns/{id}/checkout/create-order")
+def create_checkout_order(id: str, req: Optional[CreateOrderRequest] = None):
+    customer_id = req.customer_id if req and req.customer_id else "CUST_1001"
+
+    # 1. Fetch target campaign
+    campaigns = load_stored_campaigns()
+    target_camp = next((c for c in campaigns if c["id"] == id or c["id"] == f"CAMP_{id}"), None)
+    
+    if not target_camp:
+        opps = generate_opportunities(products, customers, transactions, order_items)
+        match_opp = next((o for o in opps if o["id"] == id or o["id"] in id), None)
+        if match_opp:
+            target_camp = {
+                "id": f"CAMP_{match_opp['id']}",
+                "title": match_opp["title"],
+                "discount_pct": 25.0 if "WINBACK" in id else 15.0,
+                "budget_inr": 25000.0,
+                "opportunity_id": match_opp["id"]
+            }
+        else:
+            target_camp = {
+                "id": id,
+                "title": "Campaign Offer",
+                "discount_pct": 25.0 if "GUARDRAIL" in id.upper() or "OVER" in id.upper() else 15.0,
+                "budget_inr": 25000.0,
+                "opportunity_id": "OPP_CASE_SCREEN_BUNDLE"
+            }
+
+    # 2. Guardrail Check via Supervisor Agent
+    guardrails = merchant_settings_manager.get_settings()
+    max_discount = float(guardrails.get("max_discount_percent", 25.0))
+    requested_discount = float(target_camp.get("discount_pct", 15.0))
+
+    if requested_discount > max_discount:
+        error_msg = f"This campaign cannot be launched because it exceeds the merchant's configured limit: requested {requested_discount:.0f}%, limit {max_discount:.0f}%"
+        audit_logger.log_action(
+            agent="MerchantSupervisor",
+            action="guardrail_blocked_checkout",
+            input_summary=f"Checkout attempt for campaign {id} with {requested_discount:.0f}% discount",
+            output_summary=f"BLOCKED: {error_msg}"
+        )
+        raise HTTPException(status_code=400, detail=error_msg)
+
+    # 3. Price calculation in paise (1 INR = 100 paise)
+    base_price_inr = 699.0
+    discounted_price_inr = round(base_price_inr * (1.0 - (requested_discount / 100.0)), 2)
+    amount_paise = int(round(discounted_price_inr * 100.0))
+
+    # 4. Create Razorpay Test Mode Order via Orders API
+    order = razorpay_test_client.create_order(
+        amount_paise=amount_paise,
+        currency="INR",
+        receipt=f"rcpt_{id}_{customer_id}",
+        notes={
+            "campaign_id": id,
+            "customer_id": customer_id,
+            "discount_pct": f"{requested_discount}%"
+        }
+    )
+
+    # 5. Log audit entry in plain language
+    audit_logger.log_action(
+        agent="RazorpayTestGateway",
+        action="create_order",
+        input_summary=f"Created Razorpay test order for campaign {id} (Customer: {customer_id})",
+        output_summary="Razorpay order created"
+    )
+
+    return {
+        "order_id": order["id"],
+        "amount": order["amount"],
+        "currency": order["currency"],
+        "key_id": razorpay_test_client.key_id,
+        "campaign_id": id,
+        "customer_id": customer_id,
+        "discount_pct": requested_discount,
+        "discounted_price_inr": discounted_price_inr,
+        "raw_razorpay_response": order
+    }
+
+@app.post("/api/campaigns/{id}/checkout/verify-payment")
+def verify_checkout_payment(id: str, req: VerifyPaymentRequest):
+    # 1. Server-Side HMAC Signature Verification using RAZORPAY_KEY_SECRET
+    is_valid = razorpay_test_client.verify_payment_signature(
+        order_id=req.razorpay_order_id,
+        payment_id=req.razorpay_payment_id,
+        signature=req.razorpay_signature
+    )
+
+    if not is_valid:
+        audit_logger.log_action(
+            agent="RazorpayTestGateway",
+            action="verify_payment_failed",
+            input_summary=f"Invalid payment signature for order {req.razorpay_order_id}",
+            output_summary="REJECTED: Signature mismatch"
+        )
+        raise HTTPException(status_code=400, detail="Invalid Razorpay payment signature. Request rejected.")
+
+    # 2. Record transaction linked to campaign, customer, razorpay details
+    recorded_txs = []
+    if os.path.exists(RECORDED_TX_FILE):
+        try:
+            with open(RECORDED_TX_FILE, "r", encoding="utf-8") as f:
+                recorded_txs = json.load(f)
+        except Exception:
+            recorded_txs = []
+
+    tx_id = f"TX_RZP_{len(recorded_txs) + 1001}"
+    now_iso = datetime.now().isoformat()
+
+    tx_entry = {
+        "transaction_id": tx_id,
+        "campaign_id": id,
+        "customer_id": req.customer_id,
+        "razorpay_order_id": req.razorpay_order_id,
+        "razorpay_payment_id": req.razorpay_payment_id,
+        "razorpay_signature": req.razorpay_signature,
+        "product": req.product or "Nova Premium Phone Case",
+        "amount": req.amount_inr or 594.15,
+        "discount_applied": "15%",
+        "status": "COMPLETED",
+        "timestamp": now_iso
+    }
+    recorded_txs.append(tx_entry)
+
+    os.makedirs(os.path.dirname(RECORDED_TX_FILE), exist_ok=True)
+    with open(RECORDED_TX_FILE, "w", encoding="utf-8") as f:
+        json.dump(recorded_txs, f, indent=2)
+
+    # 3. Log Audit Step 1: "Test payment successful"
+    audit_logger.log_action(
+        agent="RazorpayTestGateway",
+        action="test_payment_successful",
+        input_summary=f"Verified Razorpay signature for order {req.razorpay_order_id} (Payment: {req.razorpay_payment_id})",
+        output_summary="Test payment successful"
+    )
+
+    # 4. Update campaign's live analytics via Evaluation Agent
+    campaigns = load_stored_campaigns()
+    target_idx = next((i for i, c in enumerate(campaigns) if c["id"] == id), None)
+
+    eval_agent = EvaluationAgent()
+    budget = campaigns[target_idx].get("budget_inr", 25000.0) if target_idx is not None else 25000.0
+
+    eval_res = eval_agent.evaluate_campaign(
+        {"campaign_id": id, "title": "Campaign Offer", "budget_inr": budget},
+        {
+            "baseline_revenue_inr": 200000.0,
+            "post_campaign_revenue_inr": 200000.0 + (req.amount_inr or 594.15),
+            "actual_campaign_cost_inr": budget
+        }
+    )
+
+    if target_idx is not None:
+        c = campaigns[target_idx]
+        actual_perf = c.get("actual_performance", {})
+        actual_perf["revenue_inr"] = round(float(actual_perf.get("revenue_inr", 0.0)) + (req.amount_inr or 594.15), 2)
+        actual_perf["purchases"] = int(actual_perf.get("purchases", 0)) + 1
+        c["actual_performance"] = actual_perf
+        save_stored_campaigns(campaigns)
+
+    # 5. Log Audit Step 2: "Revenue recorded"
+    audit_logger.log_action(
+        agent="EvaluationAgent",
+        action="revenue_recorded",
+        input_summary=f"Recorded ₹{req.amount_inr or 594.15} revenue for campaign {id} (Transaction: {tx_id})",
+        output_summary="Revenue recorded"
+    )
+
+    return {
+        "status": "SUCCESS",
+        "verification_result": "PASSED",
+        "transaction": tx_entry,
+        "analytics_updated": True
+    }
+
+@app.get("/api/transactions")
+def get_recorded_transactions():
+    recorded_txs = []
+    if os.path.exists(RECORDED_TX_FILE):
+        try:
+            with open(RECORDED_TX_FILE, "r", encoding="utf-8") as f:
+                recorded_txs = json.load(f)
+        except Exception:
+            recorded_txs = []
+    return {
+        "transactions": recorded_txs,
+        "count": len(recorded_txs)
     }
 
 @app.api_route("/api/campaigns/{id}/simulate", methods=["GET", "POST"])

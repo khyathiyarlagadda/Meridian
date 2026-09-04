@@ -1,0 +1,41 @@
+[
+  {
+    "transaction_id": "TX_RZP_1001",
+    "campaign_id": "CAMP_OPP_EARBUD_CROSSSELL",
+    "customer_id": "CUST_1001",
+    "razorpay_order_id": "order_rzp_test_71ffef0fc44d",
+    "razorpay_payment_id": "pay_rzp_test_13820cf70bcd",
+    "razorpay_signature": "3642bec7f45077493d063d0ffe381e93159f3ece55dd514b9ec25483444cebaa",
+    "product": "Nova Premium Companion Phone Case",
+    "amount": 594.15,
+    "discount_applied": "15%",
+    "status": "COMPLETED",
+    "timestamp": "2026-09-04T10:13:22.881336"
+  },
+  {
+    "transaction_id": "TX_RZP_1002",
+    "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "customer_id": "CUST_1001",
+    "razorpay_order_id": "order_rzp_test_9e75467f4c35",
+    "razorpay_payment_id": "pay_rzp_test_3fzx8ksrcna",
+    "razorpay_signature": "7a443719cad27349c725907a142f8097955d4e9ace3812fbd9abb67a84cdf83f",
+    "product": "Nova Essential Protection Kit (Phone Case + 9H Glass)",
+    "amount": 1000.0,
+    "discount_applied": "15%",
+    "status": "COMPLETED",
+    "timestamp": "2026-09-04T10:47:20.157379"
+  },
+  {
+    "transaction_id": "TX_RZP_1003",
+    "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "customer_id": "CUST_1001",
+    "razorpay_order_id": "order_rzp_test_7c0e5a57cf3a",
+    "razorpay_payment_id": "pay_rzp_test_txgzywy3uxm",
+    "razorpay_signature": "62885431f1b3fcc1edae5375dfa20c07e926d95ac9d163d8691b1abd84c0363b",
+    "product": "Nova Essential Protection Kit (Phone Case + 9H Glass)",
+    "amount": 1000.0,
+    "discount_applied": "15%",
+    "status": "COMPLETED",
+    "timestamp": "2026-09-04T10:49:49.008505"
+  }
+]

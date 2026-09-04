@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import AIActivityPage from '../ai-activity/page';
 
-export default function ActivityRedirectPage() {
-  redirect('/ai-activity');
+export default function ActivityPage() {
+  return <AIActivityPage />;
 }

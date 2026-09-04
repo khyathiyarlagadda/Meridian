@@ -174,18 +174,27 @@ export default function AIActivityPage() {
 
   const mapToPlainLanguageAction = (entry: AuditEntry) => {
     const { agent, action, output_summary } = entry;
-    if (agent.includes('Opportunity')) {
-      return 'Found an opportunity';
+    if (action === 'create_order' || output_summary.includes('Razorpay order created')) {
+      return 'Razorpay order created';
     }
-    if (agent.includes('Strategy')) {
-      return 'Created a recommendation';
+    if (action === 'test_payment_successful' || output_summary.includes('Test payment successful')) {
+      return 'Test payment successful';
+    }
+    if (action === 'revenue_recorded' || output_summary.includes('Revenue recorded')) {
+      return 'Revenue recorded';
+    }
+    if (agent.includes('Opportunity') || action.includes('opportunity')) {
+      return 'Opportunity identified';
+    }
+    if (agent.includes('Strategy') || action.includes('strategy')) {
+      return 'Strategy generated';
+    }
+    if (action === 'approve_campaign' || output_summary.includes('APPROVED')) {
+      return 'Merchant approval received';
     }
     if (agent.includes('Supervisor') || agent.includes('Merchant')) {
       if (output_summary.includes('APPROVED') || output_summary.includes('LAUNCHED')) {
         return 'Campaign launched';
-      }
-      if (output_summary.includes('PENDING')) {
-        return 'Waiting for merchant approval';
       }
       return 'Checked your limits';
     }
@@ -195,10 +204,10 @@ export default function AIActivityPage() {
       }
       return 'Created a recommendation';
     }
-    if (agent.includes('Evaluation')) {
-      return 'Measured the results';
+    if (agent.includes('Evaluation') || action.includes('evaluate_campaign')) {
+      return 'Campaign performance being measured';
     }
-    return 'Processed activity step';
+    return output_summary || 'Activity recorded';
   };
 
   const formatTime = (ts: string) => {

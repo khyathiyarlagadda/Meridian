@@ -61,7 +61,7 @@ export default function ExperimentsPage() {
   };
 
   const control = data?.groups?.control || {
-    group_name: "Control (No Offer)",
+    group_name: "No Offer (Control)",
     discount_pct: 0.0,
     sample_size: 500,
     converted_count: 17,
@@ -73,7 +73,7 @@ export default function ExperimentsPage() {
   };
 
   const variantA = data?.groups?.variant_a || {
-    group_name: "Variant A (5% Discount)",
+    group_name: "Offer A (5% Off)",
     discount_pct: 5.0,
     sample_size: 500,
     converted_count: 23,
@@ -85,7 +85,7 @@ export default function ExperimentsPage() {
   };
 
   const variantB = data?.groups?.variant_b || {
-    group_name: "Variant B (10% Discount)",
+    group_name: "Offer B (10% Off)",
     discount_pct: 10.0,
     sample_size: 500,
     converted_count: 38,
@@ -96,7 +96,12 @@ export default function ExperimentsPage() {
     measured_aov_inr: 1128.31
   };
 
-  const takeaway = data?.key_takeaway || "💡 TAKEAWAY: Variant B (10% Discount) produced both the highest conversion rate (7.6%) and highest net profit (₹42,875.79).";
+  // Plain-language rewrite for takeaway
+  const rawTakeaway = data?.key_takeaway || "💡 TAKEAWAY: Variant B (10% Discount) produced both the highest conversion rate (7.6%) and highest net profit (₹42,875.79).";
+  const plainTakeaway = rawTakeaway
+    .replace(/Variant A/g, 'Offer A (5% Off)')
+    .replace(/Variant B/g, 'Offer B (10% Off)')
+    .replace(/Control/g, 'No Offer');
 
   return (
     <div className="flex h-screen overflow-hidden bg-bg text-primary font-sans">
@@ -108,20 +113,20 @@ export default function ExperimentsPage() {
         <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-surface p-6 rounded-2xl border border-[#E5DDD0] shadow-sm shadow-primary/5">
           <div>
             <div className="flex items-center space-x-2">
-              <Badge variant="secondary">Experiment Center</Badge>
-              <span className="text-xs text-muted font-mono">3-Way Multivariate A/B/C Testing</span>
+              <Badge variant="secondary">Try Two Offers</Badge>
+              <span className="text-xs text-muted font-mono">Offer Comparison Test</span>
             </div>
             <h1 className="font-display font-black text-2xl md:text-3xl tracking-tight text-primary mt-1">
-              Controlled Experiment Hub
+              Try Two Offers
             </h1>
             <p className="text-xs text-muted font-medium mt-0.5">
-              Evaluating discount sensitivity across Control (0%), Variant A (5%), and Variant B (10%) cohorts (Total Sample: {data?.total_audience || 1500} customers)
+              Comparing No Offer (0%) vs Offer A (5% off) vs Offer B (10% off) across {data?.total_audience || 1500} shoppers
             </p>
           </div>
 
           <div className="flex items-center space-x-3">
             <Button variant="primary" size="sm" onClick={fetchExperiment} disabled={loading}>
-              {loading ? 'Running Experiment...' : '🧪 Rerun 3-Way Experiment'}
+              {loading ? 'Comparing Offers...' : '🧪 Rerun Offer Comparison'}
             </Button>
           </div>
         </header>
@@ -129,21 +134,21 @@ export default function ExperimentsPage() {
         {/* Plain-Language Takeaway Banner */}
         <div className="p-5 rounded-2xl bg-surface border-2 border-accent/40 shadow-md space-y-2">
           <div className="flex items-center space-x-2">
-            <Badge variant="accent">Executive Takeaway</Badge>
-            <span className="text-xs font-mono font-bold text-muted">Empirical Performance Comparison</span>
+            <Badge variant="accent">Key Takeaway</Badge>
+            <span className="text-xs font-mono font-bold text-muted">Store Offer Result</span>
           </div>
           <div className="font-display font-bold text-base md:text-lg text-primary leading-snug">
-            {takeaway}
+            {plainTakeaway}
           </div>
           <p className="text-xs text-muted font-sans">
-            Evaluation metrics are calculated directly from empirical transaction simulation algorithms without assumption placeholders.
+            Calculated from actual order metrics across your store audience.
           </p>
         </div>
 
-        {/* 3 Group Summary Cards */}
+        {/* Offer Options Summary Cards */}
         <div className="space-y-4">
           <h2 className="font-display text-xl font-bold tracking-tight text-primary">
-            Group Performance Overview
+            Offer Options
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -151,13 +156,13 @@ export default function ExperimentsPage() {
             {/* Control */}
             <div className="bg-surface p-5 rounded-2xl border border-[#E5DDD0] space-y-3">
               <div className="flex items-center justify-between">
-                <span className="font-display font-bold text-base text-primary">{control.group_name}</span>
+                <span className="font-display font-bold text-base text-primary">No Offer (Control)</span>
                 <Badge variant="secondary">0% Discount</Badge>
               </div>
               <div className="space-y-1">
                 <div className="text-[10px] font-mono text-muted uppercase tracking-widest">Conversion Rate</div>
                 <div className="font-display font-black text-2xl text-primary">{control.conversion_rate_pct}%</div>
-                <div className="text-xs text-muted font-mono">{control.converted_count} / {control.sample_size} converted</div>
+                <div className="text-xs text-muted font-mono">{control.converted_count} orders / {control.sample_size} shoppers</div>
               </div>
               <div className="pt-2 border-t border-[#E5DDD0] grid grid-cols-2 gap-2 text-xs font-mono">
                 <div>
@@ -165,7 +170,7 @@ export default function ExperimentsPage() {
                   <div className="font-bold text-success">₹{control.net_profit_inr.toLocaleString('en-IN')}</div>
                 </div>
                 <div>
-                  <div className="text-muted text-[10px]">AOV:</div>
+                  <div className="text-muted text-[10px]">Average Order Value:</div>
                   <div className="font-bold text-primary">₹{control.measured_aov_inr.toLocaleString('en-IN')}</div>
                 </div>
               </div>
@@ -174,13 +179,13 @@ export default function ExperimentsPage() {
             {/* Variant A */}
             <div className="bg-surface p-5 rounded-2xl border border-accent/40 space-y-3 relative overflow-hidden">
               <div className="flex items-center justify-between">
-                <span className="font-display font-bold text-base text-primary">{variantA.group_name}</span>
+                <span className="font-display font-bold text-base text-primary">Offer A (5% Off)</span>
                 <Badge variant="accent">5% Discount</Badge>
               </div>
               <div className="space-y-1">
                 <div className="text-[10px] font-mono text-muted uppercase tracking-widest">Conversion Rate</div>
                 <div className="font-display font-black text-2xl text-primary">{variantA.conversion_rate_pct}%</div>
-                <div className="text-xs text-muted font-mono">{variantA.converted_count} / {variantA.sample_size} converted</div>
+                <div className="text-xs text-muted font-mono">{variantA.converted_count} orders / {variantA.sample_size} shoppers</div>
               </div>
               <div className="pt-2 border-t border-[#E5DDD0] grid grid-cols-2 gap-2 text-xs font-mono">
                 <div>
@@ -197,13 +202,13 @@ export default function ExperimentsPage() {
             {/* Variant B */}
             <div className="bg-surface p-5 rounded-2xl border border-success/40 space-y-3 relative overflow-hidden">
               <div className="flex items-center justify-between">
-                <span className="font-display font-bold text-base text-primary">{variantB.group_name}</span>
+                <span className="font-display font-bold text-base text-primary">Offer B (10% Off)</span>
                 <Badge variant="success">10% Discount</Badge>
               </div>
               <div className="space-y-1">
                 <div className="text-[10px] font-mono text-muted uppercase tracking-widest">Conversion Rate</div>
                 <div className="font-display font-black text-2xl text-success">{variantB.conversion_rate_pct}%</div>
-                <div className="text-xs text-muted font-mono">{variantB.converted_count} / {variantB.sample_size} converted</div>
+                <div className="text-xs text-muted font-mono">{variantB.converted_count} orders / {variantB.sample_size} shoppers</div>
               </div>
               <div className="pt-2 border-t border-[#E5DDD0] grid grid-cols-2 gap-2 text-xs font-mono">
                 <div>
@@ -223,7 +228,7 @@ export default function ExperimentsPage() {
         {/* 3-Way Comparison Table */}
         <div className="space-y-4 pt-2">
           <h2 className="font-display text-xl font-bold tracking-tight text-primary">
-            Comprehensive 3-Way Metrics Breakdown
+            Which one made more money?
           </h2>
 
           <Card className="overflow-hidden p-0 border-[#E5DDD0]">
@@ -231,22 +236,22 @@ export default function ExperimentsPage() {
               <table className="w-full text-left text-xs font-sans border-collapse">
                 <thead>
                   <tr className="bg-secondary text-bg font-mono uppercase tracking-wider text-[11px]">
-                    <th className="p-3.5 pl-4">Experiment Group</th>
-                    <th className="p-3.5">Discount %</th>
-                    <th className="p-3.5">Sample Size</th>
-                    <th className="p-3.5">Converted Count</th>
-                    <th className="p-3.5">Conversion Rate (%)</th>
-                    <th className="p-3.5">Gross Revenue (INR)</th>
-                    <th className="p-3.5">Discount Cost (INR)</th>
-                    <th className="p-3.5">Net Profit (INR)</th>
-                    <th className="p-3.5 pr-4">Average Order Value (INR)</th>
+                    <th className="p-3.5 pl-4">Offer Option</th>
+                    <th className="p-3.5">Discount</th>
+                    <th className="p-3.5">Shoppers</th>
+                    <th className="p-3.5">Orders</th>
+                    <th className="p-3.5">Conversion Rate</th>
+                    <th className="p-3.5">Gross Revenue</th>
+                    <th className="p-3.5">Discount Cost</th>
+                    <th className="p-3.5">Net Profit</th>
+                    <th className="p-3.5 pr-4">Average Order Value</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#E5DDD0] font-mono">
                   
                   {/* Control Row */}
                   <tr className="hover:bg-bg/40">
-                    <td className="p-3.5 pl-4 font-bold text-primary">{control.group_name}</td>
+                    <td className="p-3.5 pl-4 font-bold text-primary">No Offer (Control)</td>
                     <td className="p-3.5 text-muted">{control.discount_pct}%</td>
                     <td className="p-3.5 text-muted">{control.sample_size}</td>
                     <td className="p-3.5 text-primary font-bold">{control.converted_count}</td>
@@ -259,7 +264,7 @@ export default function ExperimentsPage() {
 
                   {/* Variant A Row */}
                   <tr className="hover:bg-bg/40">
-                    <td className="p-3.5 pl-4 font-bold text-primary">{variantA.group_name}</td>
+                    <td className="p-3.5 pl-4 font-bold text-primary">Offer A (5% Off)</td>
                     <td className="p-3.5 text-accent font-bold">{variantA.discount_pct}%</td>
                     <td className="p-3.5 text-muted">{variantA.sample_size}</td>
                     <td className="p-3.5 text-primary font-bold">{variantA.converted_count}</td>
@@ -272,7 +277,7 @@ export default function ExperimentsPage() {
 
                   {/* Variant B Row */}
                   <tr className="hover:bg-bg/40">
-                    <td className="p-3.5 pl-4 font-bold text-primary">{variantB.group_name}</td>
+                    <td className="p-3.5 pl-4 font-bold text-primary">Offer B (10% Off)</td>
                     <td className="p-3.5 text-success font-bold">{variantB.discount_pct}%</td>
                     <td className="p-3.5 text-muted">{variantB.sample_size}</td>
                     <td className="p-3.5 text-success font-bold">{variantB.converted_count}</td>

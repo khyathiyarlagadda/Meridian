@@ -19,8 +19,9 @@
     },
     "actual_performance": {
       "conversion_rate_pct": 36.4,
-      "revenue_inr": 84292.0,
-      "roi_pct": 250.5
+      "revenue_inr": 84886.15,
+      "roi_pct": 250.5,
+      "purchases": 1
     },
     "performance_delta": {
       "conversion_rate_delta_pts": -0.6,
@@ -43,7 +44,11 @@
     "status": "LAUNCHED",
     "risk_tier": "medium",
     "roi_pct": 250.5,
-    "incremental_revenue_inr": 84292.0
+    "incremental_revenue_inr": 84292.0,
+    "actual_performance": {
+      "revenue_inr": 2000.0,
+      "purchases": 2
+    }
   },
   {
     "campaign_id": "CAMP_OPP_CASE_SCREEN_BUNDLE",

@@ -1042,5 +1042,266 @@
     "input_summary": "Created Razorpay test order for CAMP_OPP_CASE_SCREEN_BUNDLE",
     "output_summary": "Razorpay Test Order ID: order_rzp_test_61958622 (55920 paise)",
     "approver": null
+  },
+  {
+    "id": 117,
+    "timestamp": "2026-09-04T10:13:21.591776",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_EARBUD_CROSSSELL (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 118,
+    "timestamp": "2026-09-04T10:13:21.591903",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_EARBUD_CROSSSELL (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 119,
+    "timestamp": "2026-09-04T10:13:21.591950",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_EARBUD_CROSSSELL (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 120,
+    "timestamp": "2026-09-04T10:13:22.882512",
+    "agent": "RazorpayTestGateway",
+    "action": "test_payment_successful",
+    "input_summary": "Verified Razorpay signature for order order_rzp_test_ffc822669a92 (Payment: pay_rzp_test_7dc87c46f945)",
+    "output_summary": "Test payment successful",
+    "approver": null
+  },
+  {
+    "id": 121,
+    "timestamp": "2026-09-04T10:13:22.882575",
+    "agent": "RazorpayTestGateway",
+    "action": "test_payment_successful",
+    "input_summary": "Verified Razorpay signature for order order_rzp_test_71ffef0fc44d (Payment: pay_rzp_test_13820cf70bcd)",
+    "output_summary": "Test payment successful",
+    "approver": null
+  },
+  {
+    "id": 122,
+    "timestamp": "2026-09-04T10:13:22.886311",
+    "agent": "EvaluationAgent",
+    "action": "evaluate_campaign",
+    "input_summary": "Evaluated performance for CAMP_OPP_EARBUD_CROSSSELL",
+    "output_summary": "Incremental Rev: \u20b9594.15, ROI: -97.5%",
+    "approver": null
+  },
+  {
+    "id": 123,
+    "timestamp": "2026-09-04T10:13:22.886611",
+    "agent": "EvaluationAgent",
+    "action": "evaluate_campaign",
+    "input_summary": "Evaluated performance for CAMP_OPP_EARBUD_CROSSSELL",
+    "output_summary": "Incremental Rev: \u20b9594.15, ROI: -97.5%",
+    "approver": null
+  },
+  {
+    "id": 124,
+    "timestamp": "2026-09-04T10:13:22.893529",
+    "agent": "EvaluationAgent",
+    "action": "revenue_recorded",
+    "input_summary": "Recorded \u20b9594.15 revenue for campaign CAMP_OPP_EARBUD_CROSSSELL (Transaction: TX_RZP_1001)",
+    "output_summary": "Revenue recorded",
+    "approver": null
+  },
+  {
+    "id": 125,
+    "timestamp": "2026-09-04T10:13:22.893597",
+    "agent": "EvaluationAgent",
+    "action": "revenue_recorded",
+    "input_summary": "Recorded \u20b9594.15 revenue for campaign CAMP_OPP_EARBUD_CROSSSELL (Transaction: TX_RZP_1001)",
+    "output_summary": "Revenue recorded",
+    "approver": null
+  },
+  {
+    "id": 126,
+    "timestamp": "2026-09-04T10:13:22.902794",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b950,000.00, Discount Max 15.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 127,
+    "timestamp": "2026-09-04T10:13:22.903778",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b950,000.00, Discount Max 15.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 128,
+    "timestamp": "2026-09-04T10:13:30.998138",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
+  },
+  {
+    "id": 129,
+    "timestamp": "2026-09-04T10:13:31.007439",
+    "agent": "MerchantSupervisor",
+    "action": "guardrail_blocked_checkout",
+    "input_summary": "Checkout attempt for campaign CAMP_GUARDRAIL_OVER_LIMIT with 25% discount",
+    "output_summary": "BLOCKED: This campaign cannot be launched because it exceeds the merchant's configured limit: requested 25%, limit 15%",
+    "approver": null
+  },
+  {
+    "id": 130,
+    "timestamp": "2026-09-04T10:13:31.020758",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b950,000.00, Discount Max 25.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 131,
+    "timestamp": "2026-09-04T10:13:31.035166",
+    "agent": "MerchantSupervisor",
+    "action": "update_guardrails",
+    "input_summary": "Updated operational guardrail settings: Budget Max \u20b950,000.00, Discount Max 25.0%",
+    "output_summary": "GUARDRAILS UPDATED",
+    "approver": null
+  },
+  {
+    "id": 132,
+    "timestamp": "2026-09-04T10:43:52.333529",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 133,
+    "timestamp": "2026-09-04T10:43:58.008169",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 134,
+    "timestamp": "2026-09-04T10:44:53.865959",
+    "agent": "OpportunityAgent",
+    "action": "analyze_opportunity",
+    "input_summary": "Analyzed OPP_CASE_SCREEN_BUNDLE (Promote Phone Case & Screen Protector Add-On Bundle)",
+    "output_summary": "Strong bundling synergy identified between Phone Cases and Screen Protectors across 2463 multi-item orders.",
+    "approver": null
+  },
+  {
+    "id": 135,
+    "timestamp": "2026-09-04T10:46:28.614178",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 136,
+    "timestamp": "2026-09-04T10:47:20.127141",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 137,
+    "timestamp": "2026-09-04T10:47:20.158653",
+    "agent": "RazorpayTestGateway",
+    "action": "test_payment_successful",
+    "input_summary": "Verified Razorpay signature for order order_rzp_test_9e75467f4c35 (Payment: pay_rzp_test_3fzx8ksrcna)",
+    "output_summary": "Test payment successful",
+    "approver": null
+  },
+  {
+    "id": 138,
+    "timestamp": "2026-09-04T10:47:20.161774",
+    "agent": "EvaluationAgent",
+    "action": "evaluate_campaign",
+    "input_summary": "Evaluated performance for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Incremental Rev: \u20b91,000.00, ROI: -96.0%",
+    "approver": null
+  },
+  {
+    "id": 139,
+    "timestamp": "2026-09-04T10:47:20.166288",
+    "agent": "EvaluationAgent",
+    "action": "revenue_recorded",
+    "input_summary": "Recorded \u20b91000.0 revenue for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Transaction: TX_RZP_1002)",
+    "output_summary": "Revenue recorded",
+    "approver": null
+  },
+  {
+    "id": 140,
+    "timestamp": "2026-09-04T10:47:20.251827",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 141,
+    "timestamp": "2026-09-04T10:49:49.001703",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
+  },
+  {
+    "id": 142,
+    "timestamp": "2026-09-04T10:49:49.009546",
+    "agent": "RazorpayTestGateway",
+    "action": "test_payment_successful",
+    "input_summary": "Verified Razorpay signature for order order_rzp_test_7c0e5a57cf3a (Payment: pay_rzp_test_txgzywy3uxm)",
+    "output_summary": "Test payment successful",
+    "approver": null
+  },
+  {
+    "id": 143,
+    "timestamp": "2026-09-04T10:49:49.011816",
+    "agent": "EvaluationAgent",
+    "action": "evaluate_campaign",
+    "input_summary": "Evaluated performance for CAMP_OPP_CASE_SCREEN_BUNDLE",
+    "output_summary": "Incremental Rev: \u20b91,000.00, ROI: -96.0%",
+    "approver": null
+  },
+  {
+    "id": 144,
+    "timestamp": "2026-09-04T10:49:49.015113",
+    "agent": "EvaluationAgent",
+    "action": "revenue_recorded",
+    "input_summary": "Recorded \u20b91000.0 revenue for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Transaction: TX_RZP_1003)",
+    "output_summary": "Revenue recorded",
+    "approver": null
+  },
+  {
+    "id": 145,
+    "timestamp": "2026-09-04T10:49:49.073796",
+    "agent": "RazorpayTestGateway",
+    "action": "create_order",
+    "input_summary": "Created Razorpay test order for campaign CAMP_OPP_CASE_SCREEN_BUNDLE (Customer: CUST_1001)",
+    "output_summary": "Razorpay order created",
+    "approver": null
   }
 ]

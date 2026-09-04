@@ -122,6 +122,25 @@ export default function CampaignDetailPage() {
           </p>
         </header>
 
+        {/* Offer is Ready for Checkout Banner */}
+        <div className="bg-surface p-6 rounded-2xl border-2 border-accent/40 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-success animate-pulse" />
+              <h2 className="font-display font-black text-lg text-primary">Offer is ready for checkout</h2>
+            </div>
+            <p className="text-xs text-muted font-medium">
+              This campaign is active and customer checkout via Razorpay is enabled.
+            </p>
+          </div>
+
+          <Link href={`/checkout?campaign_id=${detail.id}`}>
+            <Button variant="primary" size="md" className="font-bold">
+              🛒 Preview Customer Checkout →
+            </Button>
+          </Link>
+        </div>
+
         {/* Campaign Results Table */}
         <div className="bg-surface p-6 rounded-2xl border border-[#E5DDD0] shadow-sm space-y-6">
           <div className="flex items-center justify-between border-b border-[#E5DDD0] pb-4">

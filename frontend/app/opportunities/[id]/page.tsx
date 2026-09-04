@@ -360,12 +360,27 @@ export default function OpportunityDetailPage() {
 
               </div>
 
-              {/* Completion Banner */}
+              {/* Completion Banner with Checkout Preview */}
               {launchStep === 6 && (
-                <div className="mt-4 p-4 rounded-xl bg-success/15 border border-success/40 text-success space-y-1">
-                  <div className="font-bold text-sm">✓ All Actions Successfully Executed & Live-Tracked!</div>
-                  <div className="text-xs font-mono">
-                    Campaign ID: {launchResult?.campaign_id || launchResult?.id || 'CAMP_OPP_CASE_SCREEN_BUNDLE'} (Status: LAUNCHED). View results in <Link href="/campaigns" className="underline font-bold">Campaigns Hub →</Link>
+                <div className="mt-4 p-5 rounded-2xl bg-surface border-2 border-accent/40 shadow-sm space-y-4 text-primary">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#E5DDD0] pb-3">
+                    <div>
+                      <div className="font-bold text-base text-success flex items-center space-x-1.5">
+                        <span>✓ Campaign Launched & Active</span>
+                      </div>
+                      <div className="text-xs text-muted font-medium mt-0.5">
+                        Offer is ready for checkout. Customer Razorpay integration is live.
+                      </div>
+                    </div>
+                    <Link href={`/checkout?campaign_id=${launchResult?.campaign_id || activeOpp.id}`}>
+                      <Button variant="primary" size="md" className="font-bold">
+                        🛒 Preview Customer Checkout →
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="text-xs font-mono text-muted flex items-center justify-between">
+                    <span>Campaign ID: <strong>{launchResult?.campaign_id || launchResult?.id || 'CAMP_OPP_CASE_SCREEN_BUNDLE'}</strong></span>
+                    <Link href="/campaigns" className="underline font-bold text-accent">View in Campaigns Hub →</Link>
                   </div>
                 </div>
               )}
